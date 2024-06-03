@@ -64,6 +64,13 @@ export const cmdConfApi = {
     delete: Api.newDelete('/machine/security/cmd-confs/{id}'),
 };
 
+export const cmdShellApi = {
+    list: Api.newGet('/machine/command'),
+    save: Api.newPost('/machine/command'),
+    delete: Api.newDelete('/machine/command/{id}'),
+};
+
+
 export function getMachineTerminalSocketUrl(authCertName: any) {
     return `${config.baseWsUrl}/machines/terminal/${authCertName}?${joinClientParams()}`;
 }

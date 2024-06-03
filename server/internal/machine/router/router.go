@@ -7,5 +7,6 @@ func Init(router *gin.RouterGroup) {
 	InitMachineFileRouter(router)
 	InitMachineScriptRouter(router)
 	InitMachineCronJobRouter(router)
+	InitMachineCommandRouter(router)
 	InitMachineCmdConfRouter(router)
 }

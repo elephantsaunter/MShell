@@ -27,3 +27,7 @@ type SaveMachineCronJob struct {
 	CronJob   *entity.MachineCronJob
 	CodePaths []string
 }
+
+type SaveMachineCommand struct {
+	Command *entity.MachineCommand
+}

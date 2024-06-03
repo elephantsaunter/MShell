@@ -107,3 +107,13 @@ type MachineCmdConfVO struct {
 func (mcc *MachineCmdConfVO) GetRelateId() uint64 {
 	return mcc.Id
 }
+
+type MachineCommandVO struct {
+	model.Model
+
+	Name    string `json:"name"`
+	Command string `json:"command"`  // 命令配置
+	Sort    int8   `json:"sort"`     // 排序
+	Status  int8   `json:"execCmds"` // 状态
+	Remark  string `json:"remark"`   // 备注
+}
