@@ -57,10 +57,10 @@ type MachineCmdConfForm struct {
 }
 
 type MachineCommandForm struct {
-	Id      uint64 `json:"id"`
-	Name    string `json:"name"`
-	Command string `json:"command"`  // 命令配置
-	Sort    string `json:"sort"`     // 排序
-	Status  int8   `json:"execCmds"` // 状态
-	Remark  string `json:"remark"`   // 备注
+	Id      uint64  `json:"id"`
+	Name    string  `json:"name"`
+	Command string  `json:"command"` // 命令配置
+	Sort    float64 `json:"sort"`    // 排序
+	Status  int8    `json:"status"`  // 状态
+	Remark  string  `json:"remark"`  // 备注
 }

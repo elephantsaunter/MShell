@@ -131,6 +131,7 @@ const btnOk = () => {
         if (valid) {
             notEmpty(state.form.name, '名称不能为空');
             notEmpty(state.form.command, 'Shell命令不能为空');
+            state.form.sort = Number(state.form.sort);
             cmdShellApi.save.request(state.form).then(
                 () => {
                     ElMessage.success('保存成功');
