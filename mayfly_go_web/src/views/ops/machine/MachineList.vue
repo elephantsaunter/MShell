@@ -94,6 +94,9 @@
                     <el-tooltip v-if="data.protocol == MachineProtocolEnum.Ssh.value" :show-after="500" content="按住ctrl则为新标签打开" placement="top">
                         <el-button :disabled="data.status == -1" type="primary" @click="showTerminal(data, $event)" link>SSH</el-button>
                     </el-tooltip>
+                    <el-tooltip v-if="data.protocol == MachineProtocolEnum.Ssh.value" :show-after="500" content="按住ctrl则为新标签打开" placement="top">
+                        <el-button :disabled="data.status == -1" type="primary" @click="showTerminal2(data, $event)" link>SSH-2</el-button>
+                    </el-tooltip>
 
                     <el-button v-if="data.protocol == MachineProtocolEnum.Rdp.value" type="primary" @click="showRDP(data)" link>RDP</el-button>
                     <el-button v-if="data.protocol == MachineProtocolEnum.Vnc.value" type="primary" @click="showRDP(data)" link>VNC</el-button>
@@ -439,6 +442,33 @@ const showTerminal = (row: any, event: PointerEvent) => {
             query: {
                 ac,
                 name: row.name,
+            },
+        });
+        window.open(href, '_blank');
+        return;
+    }
+
+    const terminalId = Date.now();
+    terminalDialogRef.value.open({
+        terminalId,
+        socketUrl: getMachineTerminalSocketUrl(ac),
+        minTitle: `${row.name} [${(terminalId + '').slice(-2)}]`, // 截取terminalId最后两位区分多个terminal
+        minDesc: `${row.selectAuthCert.username}@${row.ip}:${row.port} (${row.name})`,
+        meta: row,
+    });
+};
+
+
+const showTerminal2 = (row: any, event: PointerEvent) => {
+    const ac = row.selectAuthCert.name;
+    // 按住ctrl点击，则新建标签页打开, metaKey对应mac command键
+    if (event.ctrlKey || event.metaKey || true) {
+        const { href } = router.resolve({
+            path: `/machine/terminalpro`,
+            query: {
+                ac,
+                name: row.name,
+                machineId:row.id,
             },
         });
         window.open(href, '_blank');

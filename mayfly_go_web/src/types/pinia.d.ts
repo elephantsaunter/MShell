@@ -110,3 +110,14 @@ declare interface KeepAliveNamesState {
     keepAliveNames: string[];
     cachedViews: string[];
 }
+
+//机器状态
+declare interface MachineState {
+    machineInfoMap: Map<string, MachineInfo>;
+}
+//机器状态详情
+declare interface MachineInfo {
+    id: string;
+    selectTreeFileId: string;//目录树选择文件id
+
+}

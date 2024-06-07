@@ -87,6 +87,12 @@ func (m *Machine) Machines(rc *req.Ctx) {
 	rc.ResData = res
 }
 
+func (m *Machine) MachineInfo(rc *req.Ctx) {
+	minfo, err := m.MachineApp.ToMachineInfoById(GetMachineId(rc))
+	biz.ErrIsNilAppendErr(err, "获得机器信息失败: %s")
+	rc.ResData = minfo
+}
+
 func (m *Machine) MachineStats(rc *req.Ctx) {
 	cli, err := m.MachineApp.GetCli(GetMachineId(rc))
 	biz.ErrIsNilAppendErr(err, "获取客户端连接失败: %s")

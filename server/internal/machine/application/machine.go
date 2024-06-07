@@ -56,6 +56,8 @@ type Machine interface {
 	GetMachineStats(machineId uint64) (*mcm.Stats, error)
 
 	ToMachineInfoByAc(ac string) (*mcm.MachineInfo, error)
+
+	ToMachineInfoById(machineId uint64) (*mcm.MachineInfo, error)
 }
 
 type machineAppImpl struct {

@@ -55,6 +55,17 @@ export const staticRoutes: Array<RouteRecordRaw> = [
         },
     },
     {
+        path: '/machine/terminalpro',
+        name: 'machineTerminalPro',
+        component: () => import('@/components/terminalpro/TerminalBodyPro.vue'),
+        meta: {
+            // 将路径 'xxx?name=名字' 里的name字段值替换到title里
+            title: '高级终端 | {name}',
+            // 是否根据query对标题名进行参数替换，即最终显示为‘终端_机器名’
+            titleRename: true,
+        },
+    },
+    {
         path: '/machine/terminal-rdp',
         name: 'machineTerminalRdp',
         component: () => import('@/views/ops/machine/RdpTerminalPage.vue'),
